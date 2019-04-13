@@ -1,4 +1,4 @@
-var taskInput = document.GetElementByID("userTask");
+var taskInput = document.getElementByID("userTask");
 var submitButton = document.getElementByID("submitButton");
 var divList = document.getElementByID("myToDoList");
 
