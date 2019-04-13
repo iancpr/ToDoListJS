@@ -1,10 +1,10 @@
-var taskInput = document.getElementById("userTask");
-var submitButton = document.getElementById("submitButton");
-var divList = document.getElementById("myToDoList");
+var taskInput = document.getElementById("new-task");
+var addButton = document.getElementById("new-task-button");
+var listArea = document.getElementById("list-container");
 
 // Creating the event listener. The submitButton is taken from the variable above
 // The add event listener takes 2 arguments, the click and an insulator function which fires another funciton "addNewTask"
-submitButton.addEventListener('click' , function(){
+addButton.addEventListener('click' , function(){
 	console.log("button clicked");
 	addNewTask();
 });
@@ -12,8 +12,8 @@ submitButton.addEventListener('click' , function(){
 var todoArray = [];
 
 function addNewTask(){
-//Stores the current date using the inbuilt Javascript funtion - Date	
-	var date = Date();
+//Stores the current date using the inbuilt Javascript function - Date	
+	var date = new Date();
 	var task = taskInput.value;
 	console.log(task);
 	var todo = {
@@ -25,12 +25,30 @@ function addNewTask(){
 		//status of the task the user has created
 		done: false
 	}
+	var todoElement = formatTodo(todo);
 	
-	todoArray.push(todo.task);
+	todoArray.push(todoElement);
 	console.log(todoArray);
-	todoArray.forEach(function(item) {
-		divList.appendChild("<p>" + item + "</p>");
-	});
+	updateTodosView();
 	
 	taskInput.value = '';
+}
+
+function formatTodo(item){
+	var listItem = document.createElement('li');
+	var itemContent = document.createElement('span');
+	var taskContent = document.createTextNode(item.task);
+	itemContent.appendChild(taskContent);
+	listItem.appendChild(itemContent);
+	listItem.setAttribute('id', item.id);
+	return listItem;
+}
+
+
+function updateTodosView (){
+	var list = document.createElement('ul');
+	todoArray.forEach(function(item){
+		list.appendChild(item);
+	});
+	listArea.replaceChild(list, listArea.firstChild);
 }
