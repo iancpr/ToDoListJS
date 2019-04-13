@@ -1,6 +1,6 @@
-var taskInput = document.getElementByID("userTask");
-var submitButton = document.getElementByID("submitButton");
-var divList = document.getElementByID("myToDoList");
+var taskInput = document.getElementById("userTask");
+var submitButton = document.getElementById("submitButton");
+var divList = document.getElementById("myToDoList");
 
 // Creating the event listener. The submitButton is taken from the variable above
 // The add event listener takes 2 arguments, the click and an insulator function which fires another funciton "addNewTask"
