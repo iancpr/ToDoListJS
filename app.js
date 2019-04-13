@@ -5,8 +5,13 @@ var listArea = document.getElementById("list-container");
 // Creating the event listener. The submitButton is taken from the variable above
 // The add event listener takes 2 arguments, the click and an insulator function which fires another funciton "addNewTask"
 addButton.addEventListener('click' , function(){
-	console.log("button clicked");
-	addNewTask();
+	console.log(taskInput.value);
+	if (!taskInput.value){
+		return;
+	}
+	else{
+	addNewTask()
+	};
 });
 
 var todoArray = [];
